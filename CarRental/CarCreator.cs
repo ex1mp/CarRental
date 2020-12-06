@@ -1,6 +1,8 @@
 ﻿using CarRental.Auto;
 using CarRental.CarBody;
 using CarRental.CarBody.ImplementedBodys;
+using CarRental.Engines.ImplementedEngines;
+using CarRentalCarRental.Engines;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,12 +11,24 @@ namespace CarRental
 {
     class CarCreator
     {
-        public void CreateCar()
+        static private int idOfCar=0;
+
+        private int IdOfCar
         {
-            double carCost;
+            get
+            {
+                idOfCar++;
+                return idOfCar;
+            }
+        }
+
+        public Car CreateCar()
+        {
+            double carCost=0;
             string model;
             bool result=false;
             ICarBody bodyCar;
+            IEngine engineCar;
 
             Console.WriteLine("Enter the name of the car");
             model = Console.ReadLine();
@@ -45,14 +59,53 @@ namespace CarRental
                 }
 
             }
+
             switch (nummberOfBody)
             {
                 case 1: bodyCar = new Coupе(); ;
                     break;
-                default:
+                case 2:
+                    bodyCar = new Hatchback(); ;
+                    break;
+                case 3:
+                    bodyCar = new Minivan(); ;
+                    break;
+                default: bodyCar = null;
                     break;
             }
 
+            result = false;
+            int nummberOfEngine = 0;
+
+            while (!result)
+            {
+                Console.WriteLine("Choose a car engine \r\n 1.DieselEngine \r\n 2.ElectricalEngine \r\n 3.GasolineEngine ");
+                string input = Console.ReadLine();
+                result = int.TryParse(input, out nummberOfEngine);
+                if (!result)
+                {
+                    Console.WriteLine("Invalid value, please try again");
+                }
+
+            }
+
+            switch (nummberOfEngine)
+            {
+                case 1:
+                    engineCar = new DieselEngine(); ;
+                    break;
+                case 2:
+                    engineCar = new ElectricalEngine(); ;
+                    break;
+                case 3:
+                    engineCar = new GasolineEngine(); ;
+                    break;
+                default:
+                    engineCar = null;
+                    break;
+            }
+            Console.WriteLine();
+            return new Car(engineCar, bodyCar, carCost, model, idOfCar);
 
         }
     }

@@ -16,12 +16,13 @@ namespace CarRental.Auto
         private double carCost;
         private int carID;
         private string carModel;
-        public Car(IEngine engine, ICarBody body,double carCost,string model)
+        public Car(IEngine engine, ICarBody body,double carCost,string model,int ID)
         {
             carBody = body;
             carEngine = engine;
             CarCost = carCost;
             CarModel = model;
+            carID = ID;
             ConsumptionOfFuel = GetConsumption(engine,body);
             MaxSpeed= GetMaxSpeed(engine, body);
         }
@@ -45,6 +46,10 @@ namespace CarRental.Auto
             double maxSpeed = 0;
             //here the maximum car speed is somehow calculated taking into account the parameters of the body and engine
             return maxSpeed;
+        }
+        public void GetCarInfo()
+        {
+            Console.WriteLine("Car ID: {0}; \r\n Model of car: {1};\r\n Max speed: {3}; \r\n Consumption of fuel: {4} \r\n Price: {5} ",carID, carModel, maxSpeed, consumptionOfFuel, carCost);
         }
 
     }
