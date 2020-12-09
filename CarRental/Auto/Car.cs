@@ -9,31 +9,24 @@ namespace CarRental.Auto
 {
     class Car : IGetFuelConsumption, IGetMaxSpeed
     {
-        private ICarBody carBody;
-        private IEngine carEngine;
-        private double consumptionOfFuel;
-        private double maxSpeed;
-        private double carCost;
-        private int carID;
-        private string carModel;
-        public Car(IEngine engine, ICarBody body,double carCost,string model,int ID)
+        public ICarBody СarBody { get; private set; }
+        public IEngine СarEngine { get; private set; }
+        public double ConsumptionOfFuel { get; private set; }
+        public double MaxSpeed { get; private set; }
+        public int CarCost { get; private set; }
+        public string CarModel { get; private set; }
+        public int CarID { get; private set; }
+
+        public Car(IEngine engine, ICarBody body,int carCost,string model,int ID)
         {
-            carBody = body;
-            carEngine = engine;
+            СarBody = body;
+            СarEngine = engine;
             CarCost = carCost;
             CarModel = model;
-            carID = ID;
+            CarID = ID;
             ConsumptionOfFuel = GetConsumption(engine,body);
             MaxSpeed= GetMaxSpeed(engine, body);
         }
-
-        public double ConsumptionOfFuel { get => consumptionOfFuel;private set => consumptionOfFuel = value; }
-        public double MaxSpeed { get => maxSpeed; private set => maxSpeed = value; }
-        public double CarCost { get => carCost; set => carCost = value; }
-        public int CarID { get => carID; private set => carID = value; }
-        public string CarModel { get => carModel; set => carModel = value; }
-        internal ICarBody CarBody { get => carBody; private set => carBody = value; }
-        internal IEngine CarEngine { get => carEngine; private  set => carEngine = value; }
 
         public double GetConsumption(IEngine engine, ICarBody body)
         {
@@ -49,7 +42,7 @@ namespace CarRental.Auto
         }
         public void GetCarInfo()
         {
-            Console.WriteLine("Car ID: {0}; \r\n Model of car: {1};\r\n Max speed: {3}; \r\n Consumption of fuel: {4} \r\n Price: {5} ",carID, carModel, maxSpeed, consumptionOfFuel, carCost);
+            Console.WriteLine("Car ID: {0}; \r\n Model of car: {1};\r\n Max speed: {3}; \r\n Consumption of fuel: {4} \r\n Price: {5} ",CarID, CarModel, MaxSpeed, ConsumptionOfFuel, CarCost);
         }
 
     }

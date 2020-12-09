@@ -5,8 +5,9 @@ using System.Text;
 
 namespace CarRental.Engines.ImplementedEngines
 {
-    class ElectricalEngine : IEngine
+    abstract class InternalCombustionEngine:IEngine
     {
+        public double EnginePower { get => EnginePower; private set => EnginePower = value; }
         public double Capacity { get => Capacity; private set => Capacity = value; }
     }
 }

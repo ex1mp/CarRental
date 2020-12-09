@@ -2,13 +2,14 @@
 using CarRental.CarBody;
 using CarRental.CarBody.ImplementedBodys;
 using CarRental.Engines.ImplementedEngines;
+using CarRental.Engines.ImplementedEngines.InternalCombustionSubclasses;
 using CarRentalCarRental.Engines;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace CarRental
-{
+{ 
     class CarCreator
     {
         static private int idOfCar=0;
@@ -21,44 +22,40 @@ namespace CarRental
                 return idOfCar;
             }
         }
-
-        public Car CreateCar()
+        private void InputValidation(bool result,string message,ref int item)
         {
-            double carCost=0;
-            string model;
-            bool result=false;
-            ICarBody bodyCar;
-            IEngine engineCar;
-
-            Console.WriteLine("Enter the name of the car");
-            model = Console.ReadLine();
-
             while (!result)
             {
-                Console.WriteLine("Enter the cost of the car");
+                //в отдельный метод
+                Console.WriteLine(message);
                 string input = Console.ReadLine();
-                result = double.TryParse(input, out carCost);
-                if(!result)
-                {
-                    Console.WriteLine("Invalid value, please try again");
-                }
-    
-            }
-
-            result = false;
-            int nummberOfBody=0;
-
-            while (!result)
-            {
-                Console.WriteLine("Choose a car body \r\n 1.Coupe \r\n 2.Hatchback \r\n 3.Minivan ");
-                string input = Console.ReadLine();
-                result = int.TryParse(input, out nummberOfBody);
+                result = int.TryParse(input, out item);
                 if (!result)
                 {
                     Console.WriteLine("Invalid value, please try again");
                 }
 
             }
+
+        }
+
+        public Car CreateCar()
+        {
+            int carCost=0;
+            string model;
+            bool result=false;
+            int nummberOfBody = 0;
+            int nummberOfEngine = 0;
+            ICarBody bodyCar;
+            IEngine engineCar;
+            string enterTheCost = "Enter the cost of the car";
+            string choseTheBody = "Choose a car body \r\n 1.Coupe \r\n 2.Hatchback \r\n 3.Minivan ";
+            string choseTheEngine = "Choose a car engine \r\n 1.DieselEngine \r\n 2.ElectricalEngine \r\n 3.GasolineEngine ";
+            Console.WriteLine("Enter the name of the car");
+            model = Console.ReadLine();
+            InputValidation(result, enterTheCost,ref carCost);
+       
+            InputValidation(result, choseTheBody,ref nummberOfBody);
 
             switch (nummberOfBody)
             {
@@ -74,20 +71,8 @@ namespace CarRental
                     break;
             }
 
-            result = false;
-            int nummberOfEngine = 0;
+            InputValidation(result, choseTheEngine, ref nummberOfEngine);
 
-            while (!result)
-            {
-                Console.WriteLine("Choose a car engine \r\n 1.DieselEngine \r\n 2.ElectricalEngine \r\n 3.GasolineEngine ");
-                string input = Console.ReadLine();
-                result = int.TryParse(input, out nummberOfEngine);
-                if (!result)
-                {
-                    Console.WriteLine("Invalid value, please try again");
-                }
-
-            }
 
             switch (nummberOfEngine)
             {

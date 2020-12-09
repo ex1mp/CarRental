@@ -6,6 +6,6 @@ namespace CarRentalCarRental.Engines
 {
     interface IEngine
     {
-        public double capacity { get => capacity; private set => capacity = value; }
+        public double EnginePower { get => EnginePower; private set => EnginePower = value; }
     }
 }

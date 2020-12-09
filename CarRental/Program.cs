@@ -8,9 +8,7 @@ namespace CarRental
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            CarCreator cr = new CarCreator();
-            cr.CreateCar();
+            CarRent rt = new CarRent();
         }
     }
 }
