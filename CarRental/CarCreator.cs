@@ -90,7 +90,7 @@ namespace CarRental
                     break;
             }
             Console.WriteLine();
-            return new Car(engineCar, bodyCar, carCost, model, idOfCar);
+            return new Car(engineCar, bodyCar, carCost, model, IdOfCar);
 
         }
     }

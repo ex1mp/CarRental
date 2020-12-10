@@ -50,7 +50,7 @@ namespace CarRental
             }
             return false;
         }
-        public List<Car> FindCar(double maxSpeed)
+        public List<Car> FindCarBySpeed(int maxSpeed)
         {
             List<Car> carsBySpeed = new List<Car>();
             foreach (Car car in CarLib)
@@ -71,9 +71,9 @@ namespace CarRental
             }
             return taxStationCost;
         }
-        public List<Car> SortByConsumption(List<Car> listOfCars)
+        public List<Car> SortByConsumption()
         {
-            return listOfCars.OrderBy(o => o.ConsumptionOfFuel).ToList();
+            return carLib.OrderBy(o => o.ConsumptionOfFuel).ToList();
         }
     }
 }
