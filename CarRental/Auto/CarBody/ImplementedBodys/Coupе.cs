@@ -1,8 +1,9 @@
-﻿using System;
+﻿using CarRental.CarBody;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CarRental.CarBody.ImplementedBodys
+namespace CarRental.Auto.CarBody.ImplementedBodys
 {
     class Coupе:ICarBody
     {

@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CarRental.Auto.ImplementedInterfaces
+namespace CarRental.Auto.Cars
 {
     interface IGetMaxSpeed
     {

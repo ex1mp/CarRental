@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using CarRental.Auto;
+using CarRental.Auto.Cars.ImplementingClasses;
 
-namespace CarRental
+namespace CarRental.Auto.DataStorage
 {
     class AutoLibrary
-    {
+    {  
         private List<Car> carLib;
 
         internal List<Car> CarLib { get => carLib; set => carLib = value; }

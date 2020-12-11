@@ -1,9 +1,13 @@
 ﻿using CarRental.Auto;
+using CarRental.Auto.CarBody;
+using CarRental.Auto.Cars.ImplementingClasses;
+using CarRental.Auto.DataStorage;
+using CarRental.MainControl.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CarRental
+namespace CarRental.MainControl
 {
     class CarRent
     {
@@ -13,6 +17,12 @@ namespace CarRental
         {
             crCar = new CarCreator();
             autoLib = new AutoLibrary();
+            MainMenu();
+        }
+        public CarRent(List<Car> carLb)
+        {
+            crCar = new CarCreator();
+            autoLib = new AutoLibrary(carLb);
             MainMenu();
         }
         public void MainMenu()

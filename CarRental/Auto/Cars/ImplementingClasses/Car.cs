@@ -3,9 +3,8 @@ using CarRentalCarRental.Engines;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using CarRental.Auto.ImplementedInterfaces;
 
-namespace CarRental.Auto
+namespace CarRental.Auto.Cars.ImplementingClasses
 {
     class Car : IGetFuelConsumption, IGetMaxSpeed
     {
@@ -38,7 +37,7 @@ namespace CarRental.Auto
         public double GetMaxSpeed(IEngine engine, ICarBody body)
         {
             var rand = new Random();
-            double maxSpeed = rand.Next(100,250);
+            double maxSpeed = rand.Next(100,450);
             //here the maximum car speed is somehow calculated taking into account the parameters of the body and engine
             return maxSpeed;
         }
